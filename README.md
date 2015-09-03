@@ -4,13 +4,17 @@ Sample using Babel for ES 2015.
 ## Usage
 You must have installed [node]( https://nodejs.org/ )
 
-#### 1. Install all required dependencies:
+#### Install all required dependencies:
 ```shell
 npm install
 ```
-#### 2. Run express (required node.js) server:
+#### Run (required node.js):
 ```shell
 gulp
 ```
+
+#### Remarks
+- all.js is file for node.js
+- bundle.js is file for web browser
 
 The MIT License
