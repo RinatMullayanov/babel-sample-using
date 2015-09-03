@@ -1,0 +1,27 @@
+{
+  "name": "babel-sample-using",
+  "version": "0.0.1",
+  "description": "babel-sample-using",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RinatMullayanov/babel-sample-using.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Rinat Mullayanov <nutsgamedev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RinatMullayanov/babel-sample-using/issues"
+  },
+  "homepage": "https://github.com/RinatMullayanov/babel-sample-using",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.5.2"
+  }
+}
