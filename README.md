@@ -1,8 +1,8 @@
 # Description
-Sample using Babel for ES 2015.
+Sample using [Babel]( https://babeljs.io/ ) for [ES 2015]( http://www.ecma-international.org/ecma-262/6.0/ ).
 
 ## Usage
-You must have installed [node]( https://nodejs.org/ )
+You must have installed [node]( https://nodejs.org/ ).
 
 #### Install all required dependencies:
 ```shell
