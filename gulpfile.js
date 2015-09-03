@@ -1,5 +1,7 @@
 var gulp = require("gulp");
 var rename = require("gulp-rename");
+var header = require('gulp-header');
+var replace = require('gulp-replace');
 var sourcemaps = require("gulp-sourcemaps");
 var babel = require("gulp-babel");
 var concat = require("gulp-concat");
@@ -16,7 +18,9 @@ gulp.task("babel", function () {
   return gulp.src("src/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(replace(/[',"]use strict[',"];/g, ''))
     .pipe(concat("all.js"))
+    .pipe(header("'use strict';"))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(config.distDir));
 });

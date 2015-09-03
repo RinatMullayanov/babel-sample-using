@@ -46,7 +46,7 @@ var Rabbit = (function (_Animal) {
 })(Animal);
 
 new Rabbit().walk();
-'use strict';
+
 
 var inc = function inc(x) {
   return x + 1;
@@ -76,7 +76,7 @@ var sorted = arr.sort(function (a, b) {
 });
 
 console.log(sorted); // 3, 5, 8
-'use strict';
+
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -86,7 +86,7 @@ var _user2 = _interopRequireDefault(_user);
 
 var user1 = new _user2['default']('Vasya');
 user1.hello();
-'use strict';
+
 
 // Interpolate variable bindings
 var name = 'Bob',
@@ -94,7 +94,7 @@ var name = 'Bob',
 var greeting = 'Hello ' + name + ', how are you ' + time + '?';
 
 console.log(greeting);
-'use strict';
+
 
 Object.defineProperty(exports, '__esModule', {
   value: true
