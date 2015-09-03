@@ -6,7 +6,7 @@ class Animal {
   }
 
   walk() {
-    alert("I walk: " + this.name);
+    console.log("I walk: " + this.name);
   }
 }
 
@@ -17,7 +17,7 @@ class Rabbit extends Animal {
 
   walk() {
     super.walk();
-    alert("...and jump!");
+    console.log("...and jump!");
   }
 }
 
