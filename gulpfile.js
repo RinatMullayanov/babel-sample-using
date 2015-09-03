@@ -36,5 +36,9 @@ gulp.task('like-babelify', ["babel", "babel-for-browserify"], function() {
     }));
 });
 
+gulp.task('watch', function () {
+  gulp.watch(['src/**/*.js'], ['like-babelify']);
+});
+
 gulp.task("default", ["like-babelify"], function () {
 });
