@@ -18,13 +18,13 @@ gulp.task("babel", function () {
     .pipe(babel())
     .pipe(concat("all.js"))
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest(config.distDir));
 });
 
 gulp.task("babel-for-browserify", function () {
   return gulp.src("src/**/*.js")
     .pipe(babel())
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest(config.distDir));
 });
 
 gulp.task('like-babelify', ["babel", "babel-for-browserify"], function() {
