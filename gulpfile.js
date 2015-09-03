@@ -11,28 +11,47 @@ var source = require('vinyl-source-stream')
 
 var config = {
   srcDir: 'src',
-  distDir: 'dist'
+  distDir: 'dist',
+  //https://babeljs.io/docs/usage/polyfill/ for enable support https://babeljs.io/docs/learn-es2015/#generators
+  polyfill: './node_modules/gulp-babel/node_modules/babel-core/browser-polyfill.js'
 };
 
-gulp.task("babel", function () {
-  return gulp.src("src/**/*.js")
+gulp.task('babel-node', function () {
+  //http://babeljs.io/docs/usage/polyfill/#usage-in-node-browserify
+  return gulp.src([config.polyfill, 'src/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(replace(/[',"]use strict[',"];/g, ''))
-    .pipe(concat("all.js"))
+    .pipe(concat('all.js'))
     .pipe(header("'use strict';"))
-    .pipe(sourcemaps.write("."))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(config.distDir));
+});
+
+gulp.task('babel-browser', function () {
+  return gulp.src('src/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(replace(/[',"]use strict[',"];/g, ''))
+    .pipe(concat('all-browser.js'))
+    .pipe(header("'use strict';"))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.distDir));
 });
 
 gulp.task("babel-for-browserify", function () {
-  return gulp.src("src/**/*.js")
+  return gulp.src('src/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest(config.distDir));
 });
 
-gulp.task('like-babelify', ["babel", "babel-for-browserify"], function() {
-  return browserify('./dist/all.js', { debug: true }) // enable sourceMap inside bundle.js file
+gulp.task('copy-polyfill', function () {
+  return gulp.src(config.polyfill)
+    .pipe(gulp.dest(config.distDir));
+});
+
+gulp.task('like-babelify', ['babel-browser', 'babel-for-browserify', 'copy-polyfill'], function() {
+  return browserify('./dist/all-browser.js', { debug: true }) // enable sourceMap inside bundle.js file
     .bundle()
     .pipe(source(config.distDir + '/bundle.js'))
     .pipe(gulp.dest(function(file) {
@@ -44,5 +63,5 @@ gulp.task('watch', function () {
   gulp.watch(['src/**/*.js'], ['like-babelify']);
 });
 
-gulp.task("default", ["like-babelify"], function () {
+gulp.task('default', ['like-babelify'], function () {
 });
