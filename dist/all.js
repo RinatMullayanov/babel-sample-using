@@ -46,4 +46,30 @@ var Rabbit = (function (_Animal) {
 })(Animal);
 
 new Rabbit().walk();
+"use strict";
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var _user = require('./user');
+
+var _user2 = _interopRequireDefault(_user);
+
+new _user2["default"]("Vasya");
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var User = function User(name) {
+  _classCallCheck(this, User);
+
+  this.name = name;
+};
+
+exports["default"] = User;
+;
+module.exports = exports["default"];
 //# sourceMappingURL=all.js.map
