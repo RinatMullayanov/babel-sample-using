@@ -7,7 +7,11 @@ var babel = require("gulp-babel");
 var concat = require("gulp-concat");
 
 var browserify = require('browserify');
-var source = require('vinyl-source-stream')
+var source = require('vinyl-source-stream');
+
+// for sass
+var sass = require('gulp-sass');
+var bourbon = require('node-bourbon'); // a simple and lightweight mixin library for Sass
 
 var config = {
   srcDir: 'src',
@@ -15,6 +19,21 @@ var config = {
   //https://babeljs.io/docs/usage/polyfill/ for enable support https://babeljs.io/docs/learn-es2015/#generators
   polyfill: './node_modules/gulp-babel/node_modules/babel-core/browser-polyfill.js'
 };
+
+gulp.task('sass', function () {
+  // based on https://medium.com/@alexslansky/playing-with-gulp-browserify-node-sass-bourbon-react-and-shoe-a1ea2dd606b
+  gulp.src(config.srcDir + '/sass/**/*.scss')
+    .pipe(sass({ 
+      includePaths: bourbon.includePaths,
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
+    .pipe(gulp.dest(config.distDir + '/css'));
+});
+ 
+gulp.task('sass:watch', function () {
+  gulp.watch(config.srcDir + '/sass/**/*.scss', ['sass']);
+});
+
 
 gulp.task('babel-node', function () {
   //http://babeljs.io/docs/usage/polyfill/#usage-in-node-browserify

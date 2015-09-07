@@ -1,0 +1,35 @@
+@import 'bourbon';
+
+// variable
+$text-color: #fc0;
+
+// extend
+.blue {
+  background: 66f;
+  font-weight: bold;
+  color: #fff;
+}
+.orange {
+  @extend .blue;
+  background: #f61;
+}
+
+// mixin
+section {
+  @include linear-gradient(to top, red, orange);
+}
+
+@mixin box($width, $color, $bg: #f0f0f0) {
+  border: $width solid $color;
+  padding: 20px;
+  background: $bg;
+}
+
+.block {
+  @include box(2px, #333); // mixin
+  color: $text-color;
+  // nested
+   a {
+	text-decoration: none;
+  }
+}
