@@ -10,6 +10,7 @@
   "rules": {
     "indent": [2, 2],
     "no-control-regex": 2,
-    "quotes": [2, "single"]
+    "quotes": [2, "single"],
+    "no-undef": 2
   }
 }
