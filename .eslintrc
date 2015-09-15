@@ -11,7 +11,7 @@
     "camelcase": 2,
     "indent": [2, 2],
     "no-control-regex": 2,
+    "no-undef": 2,
     "quotes": [2, "single"],
-    "no-undef": 2
   }
 }
