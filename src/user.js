@@ -6,6 +6,6 @@ export default class User {
   }
 
   hello() {
-  	console.log('Hi, I am ' + this.name);
+    console.log('Hi, I am ' + this.name);
   }
 };

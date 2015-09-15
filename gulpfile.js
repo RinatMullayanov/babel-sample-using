@@ -13,12 +13,29 @@ var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
 var bourbon = require('node-bourbon'); // a simple and lightweight mixin library for Sass
 
+var eslint = require('gulp-eslint');
+
 var config = {
   srcDir: 'src',
   distDir: 'dist',
   //https://babeljs.io/docs/usage/polyfill/ for enable support https://babeljs.io/docs/learn-es2015/#generators
   polyfill: './node_modules/gulp-babel/node_modules/babel-core/browser-polyfill.js'
 };
+
+gulp.task('eslint', function () {
+    return gulp.src(['src/*.js'])
+        // eslint() attaches the lint output to the eslint property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint({
+          configFile: './.eslintrc'
+        }))
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failOnError last.
+        .pipe(eslint.failOnError());
+});
 
 gulp.task('sass', function () {
   // based on https://medium.com/@alexslansky/playing-with-gulp-browserify-node-sass-bourbon-react-and-shoe-a1ea2dd606b
